@@ -2,9 +2,9 @@
 ## 开始
 lua 的独立解释程序 + lua脚本即可运行。学习过程中推荐使用独立的lua解释程序运行  
 1. 命令  
-	* 退出交互模式和解释器方法为end-of-file控制符，或者系统exit函数os.exit()  
+	* 退出交互模式和解释器方法为end-of-file控制符，或者系统exit函数os.exit()。  
 	* lua -i 运行完指定的程序块后进入交互模式。  
-	* dofile("hello.lua")加载后可以进行测试  
+	* dofile("hello.lua")加载后可以进行测试。  
 2. 语法
 	* 保留字 及标识符 大小写敏感。  
 	 保留字（' end function in local nil not repeat then '）
