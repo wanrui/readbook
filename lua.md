@@ -1,17 +1,18 @@
 # lua 学习
 ## 开始
 lua 的独立解释程序 + lua脚本即可运行。学习过程中推荐使用独立的lua解释程序运行  
-* 退出交互模式和解释器方法为end-of-file控制符，或者系统exit函数os.exit()  
-* lua -i 运行完指定的程序块后进入交互模式。  
-* dofile("hello.lua")加载后可以进行测试  
-1. 语法
+1. 命令  
+	* 退出交互模式和解释器方法为end-of-file控制符，或者系统exit函数os.exit()  
+	* lua -i 运行完指定的程序块后进入交互模式。  
+	* dofile("hello.lua")加载后可以进行测试  
+2. 语法
 	* 保留字 及标识符 大小写敏感。  
 	 保留字（' end function in local nil not repeat then '）
 	* 注释函数方法  
 	单行注释--  
 	块注释--[[  --]] 取消注释 可以在前面加‘-’即可取消注释
 	* 未初始化的变量的访问不会引发错误，输出为nil ，同时删除一个全局变量直接设置为nil，如果生命周期比较短的那种变量建议使用local 局部变量。
-2. 类型与值  
+3. 类型与值  
 lua 是一种动态类型的语言 语言中没有定义类型的语法每个值都包含类型信息
 	* 8种基础类型  
 		nil boolean number string userdata function thread table  
