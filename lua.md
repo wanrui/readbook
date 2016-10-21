@@ -123,11 +123,150 @@ opnames = {["+"] = "add",["-"] = sub}
 c = {[1] = 'wanrui',[2] = 'hello'}  
 ```
 ### 流程控制
+* 多重赋值  
+``` lua  
+a, b = 2 ,3 
+print('a-->'..a)
+print('b-->'..b)
+a,b = b,a
+print('a-->'..a)
+print('b-->'..b)
+```  
+* 全局变量与局部变量 
+``` lua
+x =10
+i = 1
+while( i<x ) do
+    local x = 2*i
+    print('while local x-->'..x)
+    i = i +1;
+end 
+print('global x-->'..x)
+--[[ 输出结果
+while local x-->2
+while local x-->4
+while local x-->6
+while local x-->8
+while local x-->10
+while local x-->12
+while local x-->14
+while local x-->16
+while local x-->18
+global x-->10
+--]]
+```
+* 所有的控制结构都是用的是end 作为结果，但是只有repeat 使用util作为结尾
+* repeat 和while 的区别是，while 先判断条件是不是符合，repeat 先执行然后在判断  
+* repeat 与其他不同的是局部变量的作用域包含了条件测试。
 1. if then else
-2. while
-3. repeat
-4. for（数字型）
-5. 泛型for 与迭代器
+``` lua
+function toString(ops)
+    if(ops == '+') then
+        print('plus')
+    elseif(ops == '-') then 
+        print('minus')
+    elseif(ops == '*') then 
+        print('multi')
+    elseif(ops == '/') then 
+        print('div')
+    end
+    return ops
+end
+
+toString('+')
+toString('-')
+toString('*')
+toString('/')
+--[[
+plus
+minus
+multi
+div
+    --]]
+```  
+2. while  
+``` lua
+x =10
+i = 1
+while( i<x ) do
+    local x = 2*i
+    print('while local x-->'..x)
+    i = i +1;
+end 
+print('global x-->'..x)
+--[[ 输出结果
+while local x-->2
+while local x-->4
+while local x-->6
+while local x-->8
+while local x-->10
+while local x-->12
+while local x-->14
+while local x-->16
+while local x-->18
+global x-->10
+--]]
+```
+3. repeat  
+``` lua
+function fact(a)
+    local i = a
+    local result = 1
+    repeat
+        result = result * i
+        i = i - 1 
+        print('repeat -->' .. result)
+    until  i <= 0
+
+    print(result)
+end 
+fact(3)
+--[[
+
+repeat -->3
+repeat -->6
+repeat -->6
+6
+    --]]
+```
+4. for（数字型）  
+for语句的循环控制是 exp1变化到exp2，中间的步长为exp3。exp3是可选想如果不选的话默认步长为1。可以使用math.huge来标识不设置上限制。
+``` lua
+--[[
+for var=exp1,exp2,exp3 do
+    <执行>
+end
+for-->1
+for-->3
+for-->5
+for-->7
+for-->9
+--]]
+for var=1,10,2 do
+    print('for-->' .. var)
+end
+```
+
+5. 泛型for 与迭代器  
+通过迭代器函数进行遍历  
+
+``` lua
+days = {'sunday','monday','tuesday','wednesday',
+ 'thursday','friday','saturday'}
+
+ for i,v in ipairs(days) do
+    print('for iterator -->'..i..v)
+ end
+ --[[
+ for iterator -->1sunday
+for iterator -->2monday
+for iterator -->3tuesday
+for iterator -->4wednesday
+for iterator -->5thursday
+for iterator -->6friday
+for iterator -->7saturday
+     --]]
+```
 6. break & return
 
 ## 函数
