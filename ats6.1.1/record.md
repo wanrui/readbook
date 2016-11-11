@@ -19,3 +19,5 @@ Default:	1
 * 1 ：缓存的初始化完成之前不接受入站连接。ts 会在缓存初始化完成后运行。 
 * 2 ：
 * 3 ：缓存的初始化完成之前不接受入站连接。ts 会在缓存初始化完成后运行。
+
+sudo ./traffic_line -r proxy.process.net.connections_currently_open
